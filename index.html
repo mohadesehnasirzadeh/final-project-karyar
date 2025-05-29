@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karyar Final Project</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <i data-lucide="command"></i>
+            <h1>Karyar Final Project</h1>
+          </div>
+          <nav class="nav">
+            <a href="#" class="nav-link active" data-page="github">
+              <i data-lucide="github"></i>
+              <span>GitHub Users</span>
+            </a>
+            <a href="#" class="nav-link" data-page="time">
+              <i data-lucide="clock"></i>
+              <span>Time App</span>
+            </a>
+            <a href="#" class="nav-link" data-page="weather">
+              <i data-lucide="cloud"></i>
+              <span>Weather App</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="github-page" class="page active">
+        <div class="container">
+          <div class="page-header">
+            <h2>GitHub User Search</h2>
+            <p>Discover GitHub users and explore their profiles</p>
+          </div>
+
+          <div class="search-section">
+            <form id="search-form" class="search-form">
+              <div class="search-input-group">
+                <input
+                  type="text"
+                  id="search-input"
+                  placeholder="Enter GitHub username (e.g., john)"
+                  class="search-input"
+                />
+              </div>
+              <div class="search-buttons">
+                <button type="submit" id="search-btn" class="btn btn-primary">
+                  <i data-lucide="search"></i>
+                  <span>Search</span>
+                </button>
+                <button type="button" id="clear-btn" class="btn btn-secondary">
+                  <i data-lucide="x"></i>
+                  <span>Clear</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Searching GitHub users...</p>
+          </div>
+
+          <div id="users-grid" class="users-grid hidden"></div>
+
+          <div id="no-results" class="no-results hidden">
+            <p>Start by searching for a GitHub username</p>
+            <p class="sub-text">
+              Enter a username like "octocat" or "john" to get started
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="github-details-page" class="page">
+        <div class="container">
+          <div id="user-details" class="user-details">
+            <div class="details-header">
+              <button id="back-btn" class="btn btn-secondary back-btn">
+                <i data-lucide="arrow-left"></i>
+                <span>Back to Search</span>
+              </button>
+              <div id="hireable-status-top" class="hireable-status-top"></div>
+            </div>
+
+            <div id="user-details-loading" class="loading hidden">
+              <div class="spinner"></div>
+              <p>Loading user details...</p>
+            </div>
+
+            <div id="user-details-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="time-page" class="page">
+        <div class="container">
+          <div class="page-header">
+            <h2>Real-Time Clock</h2>
+            <p>Live analog and digital time display</p>
+          </div>
+
+          <div class="clock-section">
+            <div class="clock-header">
+              <i data-lucide="clock"></i>
+              <h3>Digital Clock</h3>
+            </div>
+            <div id="digital-time" class="digital-time">00:00:00</div>
+            <div id="digital-date" class="digital-date">Loading...</div>
+          </div>
+
+          <div class="clock-section">
+            <h3>Analog Clock</h3>
+            <div class="analog-clock-container">
+              <svg
+                id="analog-clock"
+                width="300"
+                height="300"
+                class="analog-clock"
+              >
+                <circle
+                  cx="150"
+                  cy="150"
+                  r="140"
+                  fill="white"
+                  stroke="#e5e7eb"
+                  stroke-width="4"
+                />
+
+                <g id="hour-markers"></g>
+
+                <g id="minute-markers"></g>
+
+                <line
+                  id="hour-hand"
+                  x1="150"
+                  y1="150"
+                  x2="150"
+                  y2="90"
+                  stroke="#374151"
+                  stroke-width="6"
+                  stroke-linecap="round"
+                />
+                <line
+                  id="minute-hand"
+                  x1="150"
+                  y1="150"
+                  x2="150"
+                  y2="70"
+                  stroke="#2563eb"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <line
+                  id="second-hand"
+                  x1="150"
+                  y1="150"
+                  x2="150"
+                  y2="60"
+                  stroke="#dc2626"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+
+                <!-- Center dot -->
+                <circle cx="150" cy="150" r="8" fill="#374151" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="weather-page" class="page">
+        <div class="container">
+          <div class="page-header">
+            <h2>Weather App</h2>
+            <p>Get current weather information for any city</p>
+          </div>
+
+          <div class="weather-search-section">
+            <form id="weather-form" class="weather-form">
+              <div class="weather-input-group">
+                <input
+                  type="text"
+                  id="city-input"
+                  placeholder="Enter city name (e.g., tehran)"
+                  class="weather-input"
+                />
+              </div>
+              <button type="submit" id="weather-btn" class="btn btn-primary">
+                <i data-lucide="search"></i>
+                <span>Get Weather</span>
+              </button>
+            </form>
+          </div>
+
+          <div id="weather-loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Getting weather data...</p>
+          </div>
+
+          <div id="weather-results" class="weather-results hidden"></div>
+
+          <div id="weather-default" class="weather-default">
+            <div class="weather-default-content">
+              <i data-lucide="cloud-sun" class="weather-icon"></i>
+              <h3>Enter a city name to get weather information</h3>
+              <p class="weather-examples">
+                Try "Tehran", "Isfahan", or "Shiraz"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="navigation.js"></script>
+    <script src="github.js"></script>
+    <script src="time.js"></script>
+    <script src="weather.js"></script>
+    <script>
+      lucide.createIcons();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        initNavigation();
+        initGitHubApp();
+        initTimeApp();
+        initWeatherApp();
+      });
+    </script>
+  </body>
+</html>

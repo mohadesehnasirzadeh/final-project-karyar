@@ -6,7 +6,7 @@ This project is a multi-functional web application consisting of three interacti
 2. 🕰️ **Analog + Digital Clock**
 3. ☁️ **Weather App**
 
-🚀 [Live Preview](https://your-live-preview-link.com)  
+🚀 [Live Preview](https://mohadesehnasirzadeh.github.io/final-project-karyar)  
 *(Replace with your actual live preview URL)*
 
 ---

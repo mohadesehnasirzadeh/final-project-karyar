@@ -116,6 +116,12 @@ body {
   font-size: 1.125rem;
 }
 
+@media (max-width: 768px) {
+  .nav-link span {
+    font-size: 0.8rem;
+  }
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
